@@ -158,7 +158,7 @@ fn expr_for_external_tagged_enum<'a>(
             unique_names.insert(v.name());
             count += 1;
         })
-        .partition(|v| v.is_unit() && v.attrs.is_default());
+        .partition(|v| v.is_unit());
     let unit_names = unit_variants.iter().map(|v| v.name());
     let unit_schema = schema_object(quote! {
         instance_type: Some(schemars::schema::InstanceType::String.into()),
